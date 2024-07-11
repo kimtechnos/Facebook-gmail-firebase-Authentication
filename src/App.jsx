@@ -1,11 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { auth, provider } from "./components/config";
-import {
-  signInWithPopup,
-  FacebookAuthProvider,
-  signInAnonymously,
-} from "firebase/auth";
+import { signInWithPopup, FacebookAuthProvider } from "firebase/auth";
 import Home from "./components/Home/Home";
+import "./App.css";
 
 import "./App.css";
 
@@ -38,6 +35,8 @@ function App() {
       const facebookProvider = new FacebookAuthProvider();
       const result = await signInWithPopup(auth, facebookProvider);
       console.log("Logged user: ", result.user);
+      setValue(result.user.email);
+      localStorage.setItem("email", result.user.email);
     } catch (error) {
       console.error("Error during Facebook sign-in: ", error);
     }
@@ -48,9 +47,17 @@ function App() {
       {value ? (
         <Home />
       ) : (
-        <button onClick={handleClick}>Sign in with Google</button>
+        <div className="section-button">
+          <button className="button-google" onClick={handleClick}>
+            Sign in with Google
+          </button>
+          <div>
+            <button className="button-fb" onClick={signInWithFacebook}>
+              Sign in with Facebook
+            </button>
+          </div>
+        </div>
       )}
-      <button onClick={signInWithFacebook}>Sign in with Facebook</button>
     </>
   );
 }

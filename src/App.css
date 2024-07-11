@@ -40,3 +40,29 @@
 .read-the-docs {
   color: #888;
 }
+.section-button {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+}
+button {
+  margin: 10px;
+}
+.button-google {
+  background-color: rgb(128, 173, 101);
+  color: black;
+}
+.button-google:hover {
+  background-color: #c33c28;
+}
+
+.button-fb {
+  background-color: #3b5998;
+  color: rgb(249, 245, 245);
+}
+
+.button-fb:hover {
+  background-color: #051536;
+}
